@@ -23,7 +23,7 @@
     "url": "https://github.com/Edilberto-Vazquez/DOM-manipulation-avocado-shop/issues"
   },
   "homepage": "https://github.com/Edilberto-Vazquez/DOM-manipulation-avocado-shop#readme",
-  "dependencies": {
+  "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-typescript": "^7.15.0",
     "babel-loader": "^8.2.2",
