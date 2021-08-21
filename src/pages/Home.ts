@@ -11,7 +11,7 @@ const Home = async () => {
   // get the pruducts node
   const productList = document.querySelector("#product-list");
 
-  // create a product card
+  // create a product card and append to fragment
   await response.data.forEach((card: any) => {
     const productCard = new ProductCard(
       `${baseUrl}${card.image}`,
@@ -21,7 +21,7 @@ const Home = async () => {
     fragment.append(productCard);
   });
 
-  // append the product node with all product cards
+  // append the fragment product node with all product cards
   productList?.append(fragment);
 };
 

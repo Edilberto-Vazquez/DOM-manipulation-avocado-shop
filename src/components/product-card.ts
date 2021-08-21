@@ -1,8 +1,10 @@
 class ProductCard extends HTMLElement {
+  // create the properties
   protected _image: string;
   protected _name: string;
   protected _price: number;
 
+  // constructor with the properties
   constructor(image: string, name: string, price: number) {
     super();
     this.attachShadow({ mode: "open" });
@@ -11,6 +13,7 @@ class ProductCard extends HTMLElement {
     this._price = price;
   }
 
+  // getters and setter for the properties
   public get image(): string {
     return this._image;
   }
@@ -35,6 +38,7 @@ class ProductCard extends HTMLElement {
     this._price = value;
   }
 
+  // method to format the price
   protected formatPrice(price: number): string {
     const newPice = new window.Intl.NumberFormat("en-EN", {
       style: "currency",
@@ -44,6 +48,7 @@ class ProductCard extends HTMLElement {
     return newPice;
   }
 
+  // method to generate the styles
   protected getStyles(): string {
     return `
     <style>
@@ -94,6 +99,7 @@ class ProductCard extends HTMLElement {
     `;
   }
 
+  // method to generate the template
   protected getTemplete(): HTMLTemplateElement {
     const templete = document.createElement("template");
     templete.innerHTML = `
@@ -111,6 +117,7 @@ class ProductCard extends HTMLElement {
     return templete;
   }
 
+  // method to append the template to the shadowRoot
   protected render() {
     this.shadowRoot?.append(this.getTemplete().content.cloneNode(true));
   }
@@ -135,6 +142,7 @@ class ProductCard extends HTMLElement {
   //   }
   // }
 
+  // method to connect the element to the DOM
   public connectedCallback(): void {
     this.render();
   }

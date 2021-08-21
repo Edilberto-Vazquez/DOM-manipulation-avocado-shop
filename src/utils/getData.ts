@@ -1,3 +1,4 @@
+// get data from the API
 const getData = async (api: string) => {
   try {
     const response: Response = await fetch(api);
