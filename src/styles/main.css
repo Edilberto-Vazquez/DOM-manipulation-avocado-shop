@@ -10,20 +10,40 @@ html {
 }
 
 #app {
-  max-width: 1240px;
-  padding: 0 10px;
+  width: 100%;
+  display: grid;
+  justify-items: center;
+}
+
+.shop-title {
+  text-align: center;
+  font-size: 4.8rem;
 }
 
 .product-list {
   width: 100%;
+  max-width: 1240px;
+  margin: 24px 0;
   height: auto;
+  padding: 0 10px;
   display: grid;
   grid-auto-rows: 1fr;
   gap: 14px;
 }
 
+.social-media {
+  display: grid;
+  justify-items: center;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  font-size: x-large;
+}
+
 @media (min-width: 768px) {
   .product-list {
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
+  .social-media {
+    max-width: 600px;
   }
 }

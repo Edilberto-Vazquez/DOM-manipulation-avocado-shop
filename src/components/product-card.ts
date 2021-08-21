@@ -1,9 +1,9 @@
 class ProductCard extends HTMLElement {
-  protected _image: any;
-  protected _name: any;
-  protected _price: any;
+  protected _image: string;
+  protected _name: string;
+  protected _price: number;
 
-  constructor(image: string, name: string, price: string) {
+  constructor(image: string, name: string, price: number) {
     super();
     this.attachShadow({ mode: "open" });
     this._image = image;
@@ -27,12 +27,21 @@ class ProductCard extends HTMLElement {
     this._name = value;
   }
 
-  public get price(): string {
+  public get price(): number {
     return this._price;
   }
 
-  public set price(value: string) {
+  public set price(value: number) {
     this._price = value;
+  }
+
+  protected formatPrice(price: number): string {
+    const newPice = new window.Intl.NumberFormat("en-EN", {
+      style: "currency",
+      currency: "USD",
+    }).format(price);
+
+    return newPice;
   }
 
   protected getStyles(): string {
@@ -59,6 +68,7 @@ class ProductCard extends HTMLElement {
         border: 1px solid #568203;
         border-radius: 10px;
         cursor: pointer;
+        box-shadow: 3px 6px 6px 0px rgba(0,0,0,0.1);
       }
       .product-item:hover{
         background: #568203;
@@ -91,7 +101,9 @@ class ProductCard extends HTMLElement {
         <img class="product-item__image" src=${this.image} alt=${this.name}>
         <div class="product-description">
           <h2 class="product-description__name">${this.name}</h2>
-          <span class="product-description__price">$${this.price}</span>
+          <span class="product-description__price">${this.formatPrice(
+            this.price
+          )}</span>
         </div>
       </div>
       ${this.getStyles()}
